@@ -4,7 +4,7 @@
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 [![eslint](https://img.shields.io/badge/code_style-PSR_2-blue.svg?style=flat-square)](http://www.php-fig.org/psr/psr-2/)
 
-<img src="https://raw.githubusercontent.com/Sempro/phpunit-pretty-print/master/preview.jpg" alt="phpunit-pretty-print">
+<img src="https://raw.githubusercontent.com/Sempro/phpunit-pretty-print/master/preview.png" alt="phpunit-pretty-print">
 
 ### Installation
 ```bash
