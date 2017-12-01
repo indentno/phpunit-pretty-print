@@ -1,0 +1,16 @@
+{
+    "name": "sempro/phpunit-pretty-print",
+    "description": "Prettify PHPUnit output",
+    "type": "library",
+    "license": "MIT",
+    "minimum-stability": "dev",
+    "require": {
+        "php": ">=7.0.0",
+        "phpunit/phpunit": ">=6.0.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Sempro\\PHPUnitPrettyPrinter": "src"
+        }
+    }
+}
