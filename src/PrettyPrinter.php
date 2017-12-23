@@ -29,8 +29,11 @@ class PrettyPrinter extends ResultPrinter implements TestListener
         parent::endTest($test, $time);
 
         $testMethodName = explode('::', \PHPUnit\Util\Test::describe($test));
-        preg_match_all('/((?:^|[A-Z])[a-z]+)/', $testMethodName[1], $matches);
 
+        // convert snakeCase method name to camelCase
+        $testMethodName[1] = str_replace('_', '', ucwords($testMethodName[1], '_'));
+
+        preg_match_all('/((?:^|[A-Z])[a-z]+)/', $testMethodName[1], $matches);
         $testNameArray = array_map('strtolower', $matches[0]);
         array_shift($testNameArray);
         $name = implode(' ', $testNameArray);
