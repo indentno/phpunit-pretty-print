@@ -35,7 +35,12 @@ class PrettyPrinter extends ResultPrinter implements TestListener
 
         preg_match_all('/((?:^|[A-Z])[a-z]+)/', $testMethodName[1], $matches);
         $testNameArray = array_map('strtolower', $matches[0]);
-        array_shift($testNameArray);
+
+        // check if prefix is test remove it
+        if ($testNameArray[0] === 'test') {
+            array_shift($testNameArray);
+        }
+
         $name = implode(' ', $testNameArray);
 
         $color = 'fg-green';
