@@ -86,8 +86,8 @@ class PrettyPrinter extends ResultPrinter implements TestListener
         while ($exception) {
             $this->write(
                 "\nCaused by\n" .
-                TestFailure::exceptionToString($e) . "\n" .
-                Filter::getFilteredStacktrace($e)
+                TestFailure::exceptionToString($exception) . "\n" .
+                Filter::getFilteredStacktrace($exception)
             );
             $exception = $exception->getPrevious();
         }
