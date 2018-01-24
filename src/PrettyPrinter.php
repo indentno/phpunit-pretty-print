@@ -14,17 +14,17 @@ class PrettyPrinter extends ResultPrinter implements TestListener
     protected $className;
     protected $previousClassName;
 
-    public function startTestSuite(TestSuite $suite)
+    public function startTestSuite(TestSuite $suite): void
     {
         parent::startTestSuite($suite);
     }
 
-    public function startTest(Test $test)
+    public function startTest(Test $test): void
     {
         $this->className = get_class($test);
     }
 
-    public function endTest(Test $test, $time)
+    public function endTest(Test $test, $time): void
     {
         parent::endTest($test, $time);
 
@@ -56,7 +56,7 @@ class PrettyPrinter extends ResultPrinter implements TestListener
         $this->writeWithColor($timeColor, '[' . number_format($time, 3) . 's]', true);
     }
 
-    protected function writeProgress($progress)
+    protected function writeProgress($progress): void
     {
         if ($this->previousClassName !== $this->className) {
             $this->write("\n");
@@ -73,7 +73,7 @@ class PrettyPrinter extends ResultPrinter implements TestListener
         }
     }
 
-    protected function printDefectTrace(TestFailure $defect)
+    protected function printDefectTrace(TestFailure $defect): void
     {
         $this->write($this->formatExceptionMsg($defect->getExceptionAsString()));
         $trace = Filter::getFilteredStacktrace(
@@ -93,7 +93,7 @@ class PrettyPrinter extends ResultPrinter implements TestListener
         }
     }
 
-    protected function formatExceptionMsg($exceptionMessage)
+    protected function formatExceptionMsg($exceptionMessage): string
     {
         $exceptionMessage = str_replace("+++ Actual\n", '', $exceptionMessage);
         $exceptionMessage = str_replace("--- Expected\n", '', $exceptionMessage);
