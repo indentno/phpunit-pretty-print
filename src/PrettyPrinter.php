@@ -24,11 +24,11 @@ class PrettyPrinter extends ResultPrinter implements TestListener
         $this->className = get_class($test);
     }
 
-    public function endTest(Test $test, $time): void
+    public function endTest(Test $test, float $time): void
     {
         parent::endTest($test, $time);
 
-        $testMethodName = explode('::', \PHPUnit\Util\Test::describe($test));
+        $testMethodName = \PHPUnit\Util\Test::describe($test);
 
         // convert snakeCase method name to camelCase
         $testMethodName[1] = str_replace('_', '', ucwords($testMethodName[1], '_'));
