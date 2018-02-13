@@ -11,6 +11,8 @@
 composer require sempro/phpunit-pretty-print --dev
 ```
 
+This package requires >=7.0.0 of phpunit. If you're running on version 6, please use version 1.0.3 of this package.
+
 ### Usage
 You can specify the printer to use on the phpunit command line:
 
