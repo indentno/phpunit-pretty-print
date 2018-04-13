@@ -56,7 +56,7 @@ class PrettyPrinter extends ResultPrinter implements TestListener
         $this->writeWithColor($timeColor, '[' . number_format($time, 3) . 's]', true);
     }
 
-    protected function writeProgress($progress): void
+    protected function writeProgress(string $progress): void
     {
         if ($this->previousClassName !== $this->className) {
             $this->write("\n");
