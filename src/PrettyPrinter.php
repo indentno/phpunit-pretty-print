@@ -33,7 +33,7 @@ class PrettyPrinter extends ResultPrinter implements TestListener
         // convert snakeCase method name to camelCase
         $testMethodName[1] = str_replace('_', '', ucwords($testMethodName[1], '_'));
 
-        preg_match_all('/((?:^|[A-Z])[a-z]+)/', $testMethodName[1], $matches);
+        preg_match_all('/((?:^|[A-Z])[a-z]+|[A-Z])/', $testMethodName[1], $matches);
         $testNameArray = array_map('strtolower', $matches[0]);
 
         // check if prefix is test remove it
