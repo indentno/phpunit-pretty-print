@@ -43,6 +43,9 @@ class PrettyPrinter extends ResultPrinter implements TestListener
 
         $name = implode(' ', $testNameArray);
 
+        // get the data set name
+        $name = $this->handleDataSetName($name, $testMethodName[1]);
+
         $color = 'fg-green';
         if ($test->getStatus() !== 0) {
             $color = 'fg-red';
@@ -107,5 +110,16 @@ class PrettyPrinter extends ResultPrinter implements TestListener
         }
 
         return $exceptionMessage;
+    }
+
+    private function handleDataSetName($name, $testMethodName): string
+    {
+        preg_match('/\bwith data set "([^"]+)"/', $testMethodName, $dataSetMatch);
+
+        if (empty($dataSetMatch)) {
+            return $name;
+        }
+
+        return $name . ' [' . $dataSetMatch[1] . ']';
     }
 }
