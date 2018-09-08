@@ -6,6 +6,7 @@ use PHPUnit\Framework\Test;
 use PHPUnit\Framework\TestFailure;
 use PHPUnit\Framework\TestListener;
 use PHPUnit\Framework\TestSuite;
+use PHPUnit\Runner\BaseTestRunner;
 use PHPUnit\TextUI\ResultPrinter;
 use PHPUnit\Util\Filter;
 
@@ -54,26 +55,30 @@ class PrettyPrinter extends ResultPrinter implements TestListener
         $this->write(' ');
 
         switch ($test->getStatus()) {
-            case 0:
+            case BaseTestRunner::STATUS_PASSED:
                 $this->writeWithColor('fg-green', $name, false);
                 break;
-            case 1:
+            case BaseTestRunner::STATUS_SKIPPED:
                 $this->writeWithColor('fg-yellow', $name, false);
                 break;
-            case 2:
+            case BaseTestRunner::STATUS_INCOMPLETE:
                 $this->writeWithColor('fg-blue', $name, false);
                 break;
-            case 3:
+            case BaseTestRunner::STATUS_FAILURE:
                 $this->writeWithColor('fg-red', $name, false);
                 break;
-            case 4:
+            case BaseTestRunner::STATUS_ERROR:
                 $this->writeWithColor('fg-red', $name, false);
                 break;
-            case 5:
+            case BaseTestRunner::STATUS_RISKY:
                 $this->writeWithColor('fg-magenta', $name, false);
                 break;
+            case BaseTestRunner::STATUS_WARNING:
+                $this->writeWithColor('fg-yellow', $name, false);
+                break;
+            case BaseTestRunner::STATUS_UNKNOWN:
             default:
-                $this->writeWithColor('fg-red', $name, false);
+                $this->writeWithColor('fg-cyan', $name, false);
                 break;
         }
 
@@ -112,8 +117,11 @@ class PrettyPrinter extends ResultPrinter implements TestListener
             case 'R':
                 $this->writeWithColor('fg-magenta', '  ⌽', false);
                 break;
+            case 'W':
+                $this->writeWithColor('fg-yellow', '  ¤', false);
+                break;
             default:
-                $this->writeWithColor('fg-red', '  #', false);
+                $this->writeWithColor('fg-cyan', '  ≈', false);
                 break;
         }
     }
