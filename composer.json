@@ -1,10 +1,11 @@
 {
     "name": "sempro/phpunit-pretty-print",
+    "version": "1.0.7",
     "description": "Prettify PHPUnit output",
     "type": "library",
     "license": "MIT",
     "minimum-stability": "dev",
-    "prefer-stable" : true,
+    "prefer-stable": true,
     "require": {
         "php": ">=7.0.0",
         "phpunit/phpunit": ">=7.0.0"
