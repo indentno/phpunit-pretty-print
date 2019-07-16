@@ -2,6 +2,8 @@
 > ✅ Make your PHPUnit output beautiful
 
 [![Build Status](https://travis-ci.com/sempro/phpunit-pretty-print.svg?branch=master)](https://travis-ci.com/sempro/phpunit-pretty-print)
+[![Packagist](https://img.shields.io/packagist/dt/sempro/phpunit-pretty-print.svg)](https://packagist.org/packages/sempro/phpunit-pretty-print)
+[![Packagist](https://img.shields.io/packagist/v/sempro/phpunit-pretty-print.svg)](https://packagist.org/packages/sempro/phpunit-pretty-print)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com)
 [![psr-2](https://img.shields.io/badge/code_style-PSR_2-blue.svg)](http://www.php-fig.org/psr/psr-2/)
 
