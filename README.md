@@ -1,7 +1,7 @@
 # phpunit-pretty-print
 > Prettify PHPUnit output
 
-[![Travis](https://img.shields.io/travis/sempro/phpunit-pretty-print.svg?style=flat-square)](https://travis-ci.org/sempro/phpunit-pretty-print.svg?branch=master)
+[![Travis](https://img.shields.io/travis/sempro/phpunit-pretty-print.svg?style=flat-square)](https://travis-ci.com/sempro/phpunit-pretty-print/builds)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 [![psr-2](https://img.shields.io/badge/code_style-PSR_2-blue.svg?style=flat-square)](http://www.php-fig.org/psr/psr-2/)
 
