@@ -9,3 +9,8 @@ script:
   - ./vendor/bin/phpunit
   - ./vendor/bin/php-cs-fixer fix src/
   - ./vendor/bin/php-cs-fixer fix tests/
+
+notifications:
+email:
+  on_success: never
+  on_failure: never
