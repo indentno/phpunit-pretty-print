@@ -23,7 +23,6 @@ php vendor/bin/phpunit --printer 'Sempro\PHPUnitPrettyPrinter\PrettyPrinter' tes
 
 Optionally, you can add it to your project's `phpunit.xml` file instead:
 
-<img src="https://raw.githubusercontent.com/Sempro/phpunit-pretty-print/master/preview.gif" alt="phpunit-pretty-print">
 
 ```xml
 <phpunit
@@ -31,6 +30,8 @@ Optionally, you can add it to your project's `phpunit.xml` file instead:
     colors="true"
     printerClass="Sempro\PHPUnitPrettyPrinter\PrettyPrinter">
 ```
+
+<img src="https://raw.githubusercontent.com/Sempro/phpunit-pretty-print/master/preview.gif" width="100%" alt="phpunit-pretty-print">
 
 ### License
 MIT © [Sempro AS](http://www.sempro.no)
