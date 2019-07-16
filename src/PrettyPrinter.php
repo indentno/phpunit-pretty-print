@@ -57,28 +57,36 @@ class PrettyPrinter extends ResultPrinter implements TestListener
         switch ($test->getStatus()) {
             case BaseTestRunner::STATUS_PASSED:
                 $this->writeWithColor('fg-green', $name, false);
+
                 break;
             case BaseTestRunner::STATUS_SKIPPED:
                 $this->writeWithColor('fg-yellow', $name, false);
+
                 break;
             case BaseTestRunner::STATUS_INCOMPLETE:
                 $this->writeWithColor('fg-blue', $name, false);
+
                 break;
             case BaseTestRunner::STATUS_FAILURE:
                 $this->writeWithColor('fg-red', $name, false);
+
                 break;
             case BaseTestRunner::STATUS_ERROR:
                 $this->writeWithColor('fg-red', $name, false);
+
                 break;
             case BaseTestRunner::STATUS_RISKY:
                 $this->writeWithColor('fg-magenta', $name, false);
+
                 break;
             case BaseTestRunner::STATUS_WARNING:
                 $this->writeWithColor('fg-yellow', $name, false);
+
                 break;
             case BaseTestRunner::STATUS_UNKNOWN:
             default:
                 $this->writeWithColor('fg-cyan', $name, false);
+
                 break;
         }
 
@@ -101,27 +109,35 @@ class PrettyPrinter extends ResultPrinter implements TestListener
         switch (strtoupper(preg_replace('#\\x1b[[][^A-Za-z]*[A-Za-z]#', '', $progress))) {
             case '.':
                 $this->writeWithColor('fg-green', '  ✓', false);
+
                 break;
             case 'S':
                 $this->writeWithColor('fg-yellow', '  →', false);
+
                 break;
             case 'I':
                 $this->writeWithColor('fg-blue', '  ∅', false);
+
                 break;
             case 'F':
                 $this->writeWithColor('fg-red', '  x', false);
+
                 break;
             case 'E':
                 $this->writeWithColor('fg-red', '  ⚈', false);
+
                 break;
             case 'R':
                 $this->writeWithColor('fg-magenta', '  ⌽', false);
+
                 break;
             case 'W':
                 $this->writeWithColor('fg-yellow', '  ¤', false);
+
                 break;
             default:
                 $this->writeWithColor('fg-cyan', '  ≈', false);
+
                 break;
         }
     }
