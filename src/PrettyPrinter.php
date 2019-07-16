@@ -31,9 +31,9 @@ class PrettyPrinter extends ResultPrinter implements TestListener
 
         $testMethodName = \PHPUnit\Util\Test::describe($test);
 
-        // convert snakeCase method name to camelCase
+        // Convert snakeCase method name to camelCase
         $testMethodName[1] = str_replace('_', '', ucwords($testMethodName[1], '_'));
-
+        
         preg_match_all('/((?:^|[A-Z])[a-z]+)/', $testMethodName[1], $matches);
         $testNameArray = array_map('strtolower', $matches[0]);
 
@@ -44,7 +44,7 @@ class PrettyPrinter extends ResultPrinter implements TestListener
 
         $name = implode(' ', $testNameArray);
 
-        // get the data set name
+        // Get the data set name
         $name = $this->handleDataSetName($name, $testMethodName[1]);
 
         $color = 'fg-green';
