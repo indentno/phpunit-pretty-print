@@ -1,5 +1,5 @@
 # phpunit-pretty-print
-> Prettify PHPUnit output
+> ✅ Make your PHPUnit output beautiful
 
 [![Build Status](https://travis-ci.com/sempro/phpunit-pretty-print.svg?branch=master)](https://travis-ci.com/sempro/phpunit-pretty-print)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com)
