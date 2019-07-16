@@ -1,10 +1,10 @@
 # phpunit-pretty-print
 > Prettify PHPUnit output
 
+[![Travis](https://img.shields.io/travis/sempro/phpunit-pretty-print.svg?style=flat-square)](https://travis-ci.org/sempro/phpunit-pretty-print.svg?branch=master)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 [![psr-2](https://img.shields.io/badge/code_style-PSR_2-blue.svg?style=flat-square)](http://www.php-fig.org/psr/psr-2/)
 
-<img src="https://raw.githubusercontent.com/Sempro/phpunit-pretty-print/master/preview.png" alt="phpunit-pretty-print">
 
 ### Installation
 ```bash
@@ -22,6 +22,8 @@ php vendor/bin/phpunit --printer 'Sempro\PHPUnitPrettyPrinter\PrettyPrinter' tes
 ```
 
 Optionally, you can add it to your project's `phpunit.xml` file instead:
+
+<img src="https://raw.githubusercontent.com/Sempro/phpunit-pretty-print/master/preview.gif" alt="phpunit-pretty-print">
 
 ```xml
 <phpunit
