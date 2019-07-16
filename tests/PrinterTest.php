@@ -39,6 +39,20 @@ class PrinterTest extends \PHPUnit\Framework\TestCase
         $this->assertStringContainsString('∅ incomplete', $lines[8]);
     }
 
+    public function testTestNamesCanBeTitleCased()
+    {
+        $lines = $this->getOutput();
+
+        $this->assertStringContainsString('✓ should convert title case to lowercased words', $lines[9]);
+    }
+
+    public function testTestNameCanBeSnakeCased()
+    {
+        $lines = $this->getOutput();
+
+        $this->assertStringContainsString('✓ should convert snake case to lowercased words', $lines[10]);
+    }
+
     private function getOutput(): array
     {
         $command = [

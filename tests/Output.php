@@ -30,4 +30,14 @@ class OutputTest extends \PHPUnit\Framework\TestCase
     {
         $this->markTestIncomplete('incomplete');
     }
+
+    public function testShouldConvertTitleCaseToLowercasedWords()
+    {
+        $this->assertTrue(true);
+    }
+
+    public function test_should_convert_snake_case_to_lowercased_words()
+    {
+        $this->assertTrue(true);
+    }
 }
