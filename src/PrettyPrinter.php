@@ -31,6 +31,9 @@ class PrettyPrinter extends ResultPrinter implements TestListener
 
         $testMethodName = \PHPUnit\Util\Test::describe($test);
 
+        // Convert non-breaking method name to camelCase
+        $testMethodName[1] = str_replace(' ', '', ucwords($testMethodName[1], ' '));
+        
         // Convert snakeCase method name to camelCase
         $testMethodName[1] = str_replace('_', '', ucwords($testMethodName[1], '_'));
         
