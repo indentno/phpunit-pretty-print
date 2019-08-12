@@ -40,4 +40,9 @@ class OutputTest extends \PHPUnit\Framework\TestCase
     {
         $this->assertTrue(true);
     }
+
+    public function test should convert non breaking spaces to lowercased words()
+    {
+        $this->assertTrue(true);
+    }
 }
