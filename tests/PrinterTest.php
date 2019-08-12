@@ -53,6 +53,13 @@ class PrinterTest extends \PHPUnit\Framework\TestCase
         $this->assertStringContainsString('✓ should convert snake case to lowercased words', $lines[10]);
     }
 
+    public function testTestNameCanBeNonBreakingSpaced()
+    {
+        $lines = $this->getOutput();
+
+        $this->assertStringContainsString('✓ should convert non breaking spaces to lowercased words', $lines[11]);
+    }
+
     private function getOutput(): array
     {
         $command = [
