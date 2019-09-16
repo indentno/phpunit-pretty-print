@@ -33,19 +33,21 @@ class PrettyPrinter extends ResultPrinter implements TestListener
 
         // Convert non-breaking method name to camelCase
         $testMethodName[1] = str_replace(' ', '', ucwords($testMethodName[1], ' '));
-        
+
         // Convert snakeCase method name to camelCase
         $testMethodName[1] = str_replace('_', '', ucwords($testMethodName[1], '_'));
-        
-        preg_match_all('/((?:^|[A-Z])[a-z]+)/', $testMethodName[1], $matches);
-        $testNameArray = array_map('strtolower', $matches[0]);
 
-        // check if prefix is test remove it
-        if ($testNameArray[0] === 'test') {
-            array_shift($testNameArray);
-        }
+        preg_match_all('/((?:^|[A-Z])[a-z0-9]+)/', $testMethodName[1], $matches);
+
+        // Prepend all numbers with a space
+        $replaced = preg_replace('/(\d+)/', ' $1', $matches[0]);
+
+        $testNameArray = array_map('strtolower', $replaced);
 
         $name = implode(' ', $testNameArray);
+
+        // check if prefix is test remove it
+        $name = preg_replace('/^test /', '', $name, 1);
 
         // Get the data set name
         $name = $this->handleDataSetName($name, $testMethodName[1]);
