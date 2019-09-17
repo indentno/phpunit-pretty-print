@@ -60,6 +60,20 @@ class PrinterTest extends \PHPUnit\Framework\TestCase
         $this->assertStringContainsString('✓ should convert non breaking spaces to lowercased words', $lines[11]);
     }
 
+    public function testTestNameCanContainNumbers()
+    {
+        $lines = $this->getOutput();
+
+        $this->assertStringContainsString('✓ can contain 1 or 99 numbers', $lines[12]);
+    }
+
+    public function testTestNameCanStartOrEndWithANumber()
+    {
+        $lines = $this->getOutput();
+
+        $this->assertStringContainsString('✓ 123 can start or end with numbers 456', $lines[13]);
+    }
+
     private function getOutput(): array
     {
         $command = [
