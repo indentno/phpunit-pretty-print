@@ -45,4 +45,14 @@ class OutputTest extends \PHPUnit\Framework\TestCase
     {
         $this->assertTrue(true);
     }
+
+    public function testCanContain1Or99Numbers()
+    {
+        $this->assertTrue(true);
+    }
+
+    public function test123CanStartOrEndWithNumbers456()
+    {
+        $this->assertTrue(true);
+    }
 }
