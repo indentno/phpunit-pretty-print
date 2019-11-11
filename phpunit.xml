@@ -16,5 +16,6 @@
     </testsuites>
     <php>
         <env name="APP_ENV" value="testing"/>
+        <env name="PHPUNIT_PRETTY_PRINT_PROGRESS" value="false" />
     </php>
 </phpunit>

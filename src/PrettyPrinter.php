@@ -111,6 +111,8 @@ class PrettyPrinter extends ResultPrinter implements TestListener
 
         $this->previousClassName = $this->className;
 
+        $this->printProgress();
+
         switch (strtoupper(preg_replace('#\\x1b[[][^A-Za-z]*[A-Za-z]#', '', $progress))) {
             case '.':
                 $this->writeWithColor('fg-green', '  ✓', false);
@@ -192,5 +194,17 @@ class PrettyPrinter extends ResultPrinter implements TestListener
         }
 
         return $name . ' [' . $dataSetMatch[1] . ']';
+    }
+
+    private function printProgress()
+    {
+        if (filter_var(getenv('PHPUNIT_PRETTY_PRINT_PROGRESS'), FILTER_VALIDATE_BOOLEAN)) {
+            $this->numTestsRun++;
+
+            $total = $this->numTests;
+            $current = str_pad($this->numTestsRun, strlen($total), '0', STR_PAD_LEFT);
+
+            $this->write("[{$current}/{$total}]");
+        }
     }
 }
