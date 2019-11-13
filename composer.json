@@ -1,6 +1,6 @@
 {
     "name": "sempro/phpunit-pretty-print",
-    "version": "1.1.11",
+    "version": "1.2.0",
     "description": "Prettify PHPUnit output",
     "type": "library",
     "license": "MIT",

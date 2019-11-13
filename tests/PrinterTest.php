@@ -74,6 +74,18 @@ class PrinterTest extends \PHPUnit\Framework\TestCase
         $this->assertStringContainsString('✓ 123 can start or end with numbers 456', $lines[13]);
     }
 
+    public function testItCanShowProgressWhileRunningTests()
+    {
+        putenv('PHPUNIT_PRETTY_PRINT_PROGRESS=true');
+
+        $lines = array_slice($this->getOutput(), 4, 10);
+        $count = count($lines);
+
+        foreach ($lines as $index => $line) {
+            $this->assertStringContainsString(vsprintf('%s/%s', [$index+1, $count]), $line);
+        }
+    }
+
     private function getOutput(): array
     {
         $command = [
@@ -83,7 +95,7 @@ class PrinterTest extends \PHPUnit\Framework\TestCase
         ];
 
         exec(implode(' ', $command), $out);
-        
+
         return $out;
     }
 }
