@@ -35,5 +35,16 @@ Optionally, you can add it to your project's `phpunit.xml` file instead:
 
 <img src="https://raw.githubusercontent.com/Sempro/phpunit-pretty-print/master/preview.gif" width="100%" alt="phpunit-pretty-print">
 
+### Optional
+
+To view progress while tests are running you can set `PHPUNIT_PRETTY_PRINT_PROGRESS=true` as environment variable on your server or within your `phpunit.xml` config file.
+```xml
+<phpunit>
+    <php>
+        <env name="PHPUNIT_PRETTY_PRINT_PROGRESS" value="true" />
+    </php>
+</phpunit>
+```
+
 ### License
 MIT © [Sempro AS](http://www.sempro.no)
