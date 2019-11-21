@@ -74,11 +74,18 @@ class PrinterTest extends \PHPUnit\Framework\TestCase
         $this->assertStringContainsString('✓ 123 can start or end with numbers 456', $lines[13]);
     }
 
+    public function testTestNameCanContainCapitalizedWords()
+    {
+        $lines = $this->getOutput();
+
+        $this->assertStringContainsString('✓ should preserve capitalized and partially capitalized words', $lines[14]);
+    }
+
     public function testItCanShowProgressWhileRunningTests()
     {
         putenv('PHPUNIT_PRETTY_PRINT_PROGRESS=true');
 
-        $lines = array_slice($this->getOutput(), 4, 10);
+        $lines = array_slice($this->getOutput(), 4, 11);
         $count = count($lines);
 
         foreach ($lines as $index => $line) {
