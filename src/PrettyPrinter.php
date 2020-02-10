@@ -4,13 +4,13 @@ namespace Sempro\PHPUnitPrettyPrinter;
 
 use PHPUnit\Framework\Test;
 use PHPUnit\Framework\TestFailure;
-use PHPUnit\Framework\TestListener;
 use PHPUnit\Framework\TestSuite;
+use PHPUnit\Runner\TestHook;
 use PHPUnit\Runner\BaseTestRunner;
-use PHPUnit\TextUI\ResultPrinter;
+use PHPUnit\TextUI\DefaultResultPrinter;
 use PHPUnit\Util\Filter;
 
-class PrettyPrinter extends ResultPrinter implements TestListener
+class PrettyPrinter extends DefaultResultPrinter implements TestHook
 {
     protected $className;
     protected $previousClassName;

@@ -3,8 +3,9 @@
 namespace Sempro\PHPUnitPrettyPrinter\Tests;
 
 use Exception;
+use PHPUnit\Framework\TestCase;
 
-class OutputTest extends \PHPUnit\Framework\TestCase
+class Output extends TestCase
 {
     public function testSuccess(): void
     {
