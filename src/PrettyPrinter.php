@@ -7,10 +7,10 @@ use PHPUnit\Framework\TestFailure;
 use PHPUnit\Framework\TestListener;
 use PHPUnit\Framework\TestSuite;
 use PHPUnit\Runner\BaseTestRunner;
-use PHPUnit\TextUI\ResultPrinter;
+use PHPUnit\TextUI\DefaultResultPrinter;
 use PHPUnit\Util\Filter;
 
-class PrettyPrinter extends ResultPrinter implements TestListener
+class PrettyPrinter extends DefaultResultPrinter implements TestListener
 {
     protected $className;
     protected $previousClassName;
