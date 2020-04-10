@@ -180,6 +180,7 @@ class PrettyPrinter extends ResultPrinter implements TestListener
 
         if ($this->colors) {
             $exceptionMessage = preg_replace('/^(Exception.*)$/m', "\033[01;31m$1\033[0m", $exceptionMessage);
+            $exceptionMessage = "\033[01;33m" . $exceptionMessage . "\033[0m";
             $exceptionMessage = preg_replace('/(Failed.*)$/m', "\033[01;31m$1\033[0m", $exceptionMessage);
             $exceptionMessage = preg_replace("/(\-+.*)$/m", "\033[01;32m$1\033[0m", $exceptionMessage);
             $exceptionMessage = preg_replace("/(\++.*)$/m", "\033[01;31m$1\033[0m", $exceptionMessage);
