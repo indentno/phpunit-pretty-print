@@ -3,7 +3,6 @@
 
 namespace Sempro\PHPUnitPrettyPrinter;
 
-
 use PHPUnit\Framework\Test;
 use PHPUnit\Framework\TestFailure;
 use PHPUnit\Framework\TestSuite;
@@ -32,7 +31,9 @@ trait PrettyPrinterTrait
         $testMethodName = \PHPUnit\Util\Test::describe($test);
 
         // Convert capitalized words to lowercase
-        $testMethodName[1] = preg_replace_callback('/([A-Z]{2,})/', function ($matches) { return strtolower($matches[0]); }, $testMethodName[1]);
+        $testMethodName[1] = preg_replace_callback('/([A-Z]{2,})/', function ($matches) {
+            return strtolower($matches[0]);
+        }, $testMethodName[1]);
 
         // Convert non-breaking method name to camelCase
         $testMethodName[1] = str_replace(' ', '', ucwords($testMethodName[1], ' '));
