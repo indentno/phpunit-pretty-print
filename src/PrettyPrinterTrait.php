@@ -59,6 +59,9 @@ trait PrettyPrinterTrait
 
         // Get the data set name
         if ($dataSet) {
+            // Note: Use preg_replace() instead of trim() because the dataset may end with a quote
+            // (double quotes) and trim() would remove both from the end. This matches only a single
+            // quote from the beginning and end of the dataset that was added by PHPUnit itself.
             $name .= ' [ ' . preg_replace('/^"|"$/', '', $dataSet) . ' ]';
         }
 
