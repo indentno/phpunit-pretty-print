@@ -1,6 +1,6 @@
 {
     "name": "sempro/phpunit-pretty-print",
-    "version": "1.2.2",
+    "version": "1.3.0",
     "description": "Prettify PHPUnit output",
     "type": "library",
     "license": "MIT",
@@ -8,7 +8,7 @@
     "prefer-stable": true,
     "require": {
         "php": ">=7.1.0",
-        "phpunit/phpunit": ">=7.0.0 <9.0.0"
+        "phpunit/phpunit": ">=7.0.0 ^9.0.0"
     },
     "autoload": {
         "psr-4": {
@@ -16,6 +16,6 @@
         }
     },
     "require-dev": {
-        "friendsofphp/php-cs-fixer": "^2.15"
+        "friendsofphp/php-cs-fixer": "^2.16"
     }
 }

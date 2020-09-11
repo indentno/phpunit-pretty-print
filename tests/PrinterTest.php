@@ -98,7 +98,7 @@ class PrinterTest extends \PHPUnit\Framework\TestCase
         $command = [
             "vendor/bin/phpunit",
             "tests/Output.php",
-            "--printer 'Sempro\PHPUnitPrettyPrinter\PrettyPrinter'",
+            "--printer 'Sempro\PHPUnitPrettyPrinter\PrettyPrinterForPhpUnit9'",
         ];
 
         exec(implode(' ', $command), $out);

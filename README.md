@@ -14,23 +14,30 @@ composer require sempro/phpunit-pretty-print --dev
 ```
 
 This package requires `>=7.0.0` of PHPUnit.
+
 If you're running on `6.x`, please use version `1.0.3`.
+
+If you are running on `9.x` use the `\Sempro\PHPUnitPrettyPrinter\PrettyPrinterForPhpUnit9` class
 
 ### Usage
 You can specify the printer to use on the phpunit command line:
 
+For PhpUnit < 9, use the following:
 ```bash
 php vendor/bin/phpunit --printer 'Sempro\PHPUnitPrettyPrinter\PrettyPrinter' tests/
 ```
+For PhpUnit >= 9, use the following:
+```bash
+php vendor/bin/phpunit --printer 'Sempro\PHPUnitPrettyPrinter\PrettyPrinterForPhpUnit9' tests/
+```
 
 Optionally, you can add it to your project's `phpunit.xml` file instead:
-
 
 ```xml
 <phpunit
     bootstrap="bootstrap.php"
     colors="true"
-    printerClass="Sempro\PHPUnitPrettyPrinter\PrettyPrinter">
+    printerClass="Sempro\PHPUnitPrettyPrinter\PrettyPrinterForPhpUnit9">
 ```
 
 <img src="https://raw.githubusercontent.com/Sempro/phpunit-pretty-print/master/preview.gif" width="100%" alt="phpunit-pretty-print">
