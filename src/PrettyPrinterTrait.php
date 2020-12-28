@@ -30,6 +30,13 @@ trait PrettyPrinterTrait
 
         $testMethodName = \PHPUnit\Util\Test::describe($test);
 
+        // Get the data set name
+        $dataSetName = $this->getDataSetName($testMethodName[1]);
+
+        // Strip dataset name from name description so it doesn't interfere
+        // with below formatting rules
+        $testMethodName[1] = $this->stripDataSetName($testMethodName[1]);
+
         // Convert capitalized words to lowercase
         $testMethodName[1] = preg_replace_callback('/([A-Z]{2,})/', function ($matches) {
             return strtolower($matches[0]);
@@ -53,8 +60,9 @@ trait PrettyPrinterTrait
         // check if prefix is test remove it
         $name = preg_replace('/^test /', '', $name, 1);
 
-        // Get the data set name
-        $name = $this->handleDataSetName($name, $testMethodName[1]);
+        if ($dataSetName !== null) {
+            $name = sprintf('%s [%s]', $name, $dataSetName);
+        }
 
         $color = 'fg-green';
         if ($test->getStatus() !== 0) {
@@ -189,15 +197,26 @@ trait PrettyPrinterTrait
         return $exceptionMessage;
     }
 
-    private function handleDataSetName($name, $testMethodName): string
+    private function getDataSetName($testMethodName): ?string
     {
         preg_match('/\bwith data set "([^"]+)"/', $testMethodName, $dataSetMatch);
 
         if (empty($dataSetMatch)) {
-            return $name;
+            return null;
         }
 
-        return $name . ' [' . $dataSetMatch[1] . ']';
+        return $dataSetMatch[1];
+    }
+
+    private function stripDataSetName($testMethodName): ?string
+    {
+        preg_match('/\b(.*)with data set "([^"]+)"/', $testMethodName, $matches);
+
+        if (empty($matches)) {
+            return $testMethodName;
+        }
+
+        return $matches[1];
     }
 
     private function printProgress()

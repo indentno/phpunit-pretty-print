@@ -60,4 +60,20 @@ class Output extends \PHPUnit\Framework\TestCase
     {
         $this->assertTrue(true);
     }
+
+    public function dataProvider()
+    {
+        yield 'dataset1' => ['test'];
+        yield 'DataSet2' => ['test'];
+        yield 'data set 3' => ['test'];
+    }
+
+    /**
+     * @dataProvider dataProvider
+     */
+    public function testWithNamedDatasets(string $value)
+    {
+        $this->assertEquals('test', $value);
+    }
+
 }
