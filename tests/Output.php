@@ -21,6 +21,10 @@ class Output extends \PHPUnit\Framework\TestCase
         throw new Exception('error');
     }
 
+    public function testRisky(): void
+    {
+    }
+
     public function testSkip(): void
     {
         $this->markTestSkipped('skipped');
