@@ -29,19 +29,23 @@ trait PrettyPrinterTrait
         parent::endTest($test, $time);
 
         $testMethodName = \PHPUnit\Util\Test::describe($test);
+        
+        $parts = preg_split('/ with data set /', $testMethodName[1]);
+        $methodName = array_shift($parts);
+        $dataSet = array_shift($parts);
 
         // Convert capitalized words to lowercase
-        $testMethodName[1] = preg_replace_callback('/([A-Z]{2,})/', function ($matches) {
+        $methodName = preg_replace_callback('/([A-Z]{2,})/', function ($matches) {
             return strtolower($matches[0]);
-        }, $testMethodName[1]);
+        }, $methodName);
 
         // Convert non-breaking method name to camelCase
-        $testMethodName[1] = str_replace(' ', '', ucwords($testMethodName[1], ' '));
+        $methodName = str_replace(' ', '', ucwords($methodName, ' '));
 
         // Convert snakeCase method name to camelCase
-        $testMethodName[1] = str_replace('_', '', ucwords($testMethodName[1], '_'));
+        $methodName = str_replace('_', '', ucwords($methodName, '_'));
 
-        preg_match_all('/((?:^|[A-Z])[a-z0-9]+)/', $testMethodName[1], $matches);
+        preg_match_all('/((?:^|[A-Z])[a-z0-9]+)/', $methodName, $matches);
 
         // Prepend all numbers with a space
         $replaced = preg_replace('/(\d+)/', ' $1', $matches[0]);
@@ -54,7 +58,12 @@ trait PrettyPrinterTrait
         $name = preg_replace('/^test /', '', $name, 1);
 
         // Get the data set name
-        $name = $this->handleDataSetName($name, $testMethodName[1]);
+        if ($dataSet) {
+            // Note: Use preg_replace() instead of trim() because the dataset may end with a quote
+            // (double quotes) and trim() would remove both from the end. This matches only a single
+            // quote from the beginning and end of the dataset that was added by PHPUnit itself.
+            $name .= ' [ ' . preg_replace('/^"|"$/', '', $dataSet) . ' ]';
+        }
 
         $color = 'fg-green';
         if ($test->getStatus() !== 0) {
@@ -187,17 +196,6 @@ trait PrettyPrinterTrait
         }
 
         return $exceptionMessage;
-    }
-
-    private function handleDataSetName($name, $testMethodName): string
-    {
-        preg_match('/\bwith data set "([^"]+)"/', $testMethodName, $dataSetMatch);
-
-        if (empty($dataSetMatch)) {
-            return $name;
-        }
-
-        return $name . ' [' . $dataSetMatch[1] . ']';
     }
 
     private function printProgress()
