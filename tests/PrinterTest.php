@@ -92,12 +92,23 @@ class PrinterTest extends \PHPUnit\Framework\TestCase
     {
         putenv('PHPUNIT_PRETTY_PRINT_PROGRESS=true');
 
-        $lines = array_slice($this->getOutput(), 4, 12);
+        $lines = array_slice($this->getOutput(), 4, 15);
         $count = count($lines);
 
         foreach ($lines as $index => $line) {
             $this->assertStringContainsString(vsprintf('%s/%s', [$index + 1, $count]), $line);
         }
+
+        putenv('PHPUNIT_PRETTY_PRINT_PROGRESS=false');
+    }
+
+    public function testItShowsDatasetName()
+    {
+        $lines = $this->getOutput();
+
+        $this->assertStringContainsString('✓ with named datasets [ dataset1 ]', $lines[16]);
+        $this->assertStringContainsString('✓ with named datasets [ DataSet2 ]', $lines[17]);
+        $this->assertStringContainsString('✓ with named datasets [ data set 3 ]', $lines[18]);
     }
 
     private function getOutput(): array
